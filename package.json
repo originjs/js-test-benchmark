@@ -1,0 +1,18 @@
+{
+  "name": "js-test-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm -r run test",
+    "test:inline": "pnpm -r run test:inline",
+    "test:jest": "pnpm -r --filter jest run test",
+    "test:vitest": "pnpm -r --filter vitest run test",
+    "test:jest:inline": "pnpm -r --filter jest run test --runInBand",
+    "test:vitest:inline": "pnpm -r --filter vitest run test --poolOptions.threads.singleThread=true",
+    "test:ben": "hyperfine.exe --warmup 1 --runs 2  \"pnpm run test:jest\" \"pnpm run test:vitest\" \"pnpm run test:jest:inline\" \"pnpm run test:vitest:inline\"" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
