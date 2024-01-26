@@ -32,7 +32,7 @@ jobs:
           node-version: '20'
 
       - name: Collect Workflow Telemetry
-        uses: catchpoint/workflow-telemetry-action@v1
+        uses: konpeki622/workflow-telemetry-action@v1.0.4
       
       - name: Install
         run: |
