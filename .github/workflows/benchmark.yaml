@@ -1,6 +1,5 @@
 name: Run Benchmarks Single
 on:
-  pull_request:
   workflow_dispatch:
     inputs:
       runTimes:
