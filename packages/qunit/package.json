@@ -1,0 +1,18 @@
+{
+  "name": "qunit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "qunit"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "qunit": "^2.20.0"
+  },
+  "type": "module"
+}
