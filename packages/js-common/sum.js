@@ -1,3 +1,7 @@
-export function sum(a, b) {
-  return a + b;
+export function sum(...nums) {
+  let res = 0;
+  for (let num of nums) {
+    res = num + res;
+  }
+  return res;
 }
