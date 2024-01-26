@@ -1,12 +1,16 @@
 {
-  "name": "js-common",
+  "name": "jasmine",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jasmine"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "jasmine": "^5.1.0"
+  },
   "type": "module"
 }
