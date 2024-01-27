@@ -1,5 +1,6 @@
 name: Run Benchmarks Single
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       runTimes:
@@ -38,7 +39,7 @@ jobs:
           node-version: '20'
 
       - name: Collect Workflow Telemetry
-        uses: catchpoint/workflow-telemetry-action@v1
+        uses: konpeki622/workflow-telemetry-action@v1.0.5
       
       - name: Install
         run: |

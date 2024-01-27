@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
 
       - name: Collect Workflow Telemetry
-        uses: catchpoint/workflow-telemetry-action@v1
+        uses: konpeki622/workflow-telemetry-action@v1.0.5
       
       - name: Install
         run: |
@@ -34,7 +34,7 @@ jobs:
      
       - name: Output
         run: |
-          cat /home/runner/work/_actions/catchpoint/workflow-telemetry-action/v1/dist/proc-tracer/proc-trace.out
+          cat /home/runner/work/_actions/konpeki622/workflow-telemetry-action/v1.0.5/dist/proc-tracer/proc-trace.out
 
   benchmark-windows:
     runs-on: windows-latest
@@ -47,7 +47,7 @@ jobs:
           node-version: '20'
 
       - name: Collect Workflow Telemetry
-        uses: catchpoint/workflow-telemetry-action@v1
+        uses: konpeki622/workflow-telemetry-action@v1.0.5
       
       - name: Install
         run: |
