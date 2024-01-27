@@ -1,8 +1,5 @@
 name: Run Benchmarks Single
 on:
-  push:
-    branches:
-      - '**'
   workflow_dispatch:
     inputs:
       runTimes:
@@ -55,4 +52,4 @@ jobs:
 
       - name: Run test
         run: |
-          hyperfine --warmup 1 --runs  2 ${{ matrix.test }}
+          hyperfine --warmup ${{ inputs.Warmup }} --runs ${{ inputs.runTimes }} ${{ matrix.test }}
