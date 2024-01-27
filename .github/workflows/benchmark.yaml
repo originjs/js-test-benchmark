@@ -63,4 +63,4 @@ jobs:
 
       - name: Output
         run: |
-          cat /home/runner/work/_actions/catchpoint/workflow-telemetry-action/v1/dist/proc-tracer/proc-trace.out
+          cat /home/runner/work/_actions/konpeki622/workflow-telemetry-action/v1.0.5/dist/proc-tracer/proc-trace.out
