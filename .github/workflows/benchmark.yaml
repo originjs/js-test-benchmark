@@ -28,10 +28,9 @@ jobs:
   benchmark:
     strategy:
       matrix:
-        test: ["\'pnpm run test:jasmine\'"]
-        # test: ['pnpm run test:jasmine', 'pnpm run test:jest', 'pnpm run test:vitest', 'pnpm run test:mocha',
-        # 'pnpm run test:qunit', 'pnpm run test:ava', 'pnpm run test:jest:inline', 'pnpm run test:vitest:inline']
-        os: [ubuntu-latest, windows-latest]
+        test: ["\'pnpm run test:jasmine\'", "\'pnpm run test:jest\'", "\'pnpm run test:vitest\'", "\'pnpm run test:mocha\'",
+        "\'pnpm run test:qunit\'", "\'pnpm run test:ava\'", "\'pnpm run test:jest:inline\'", "\'pnpm run test:vitest:inline\'"]
+        os: [ubuntu-latest]
     runs-on:  ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
