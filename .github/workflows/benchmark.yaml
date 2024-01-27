@@ -1,5 +1,8 @@
 name: Run Benchmarks Single
 on:
+  push:
+    branches:
+      - '**'
   workflow_dispatch:
     inputs:
       runTimes:
@@ -11,6 +14,7 @@ on:
         - 1
         - 5
         - 10
+        - 100
       Warmup:
         description: 'Warmup times'
         required: true
@@ -21,8 +25,13 @@ on:
         - 1
         - 3
 jobs:
-  benchmark-ubuntu:
-    runs-on: ubuntu-latest
+  benchmark:
+    strategy:
+      matrix:
+        test: ["\'pnpm run test:jasmine\'", "\'pnpm run test:jest\'", "\'pnpm run test:vitest\'", "\'pnpm run test:mocha\'",
+        "\'pnpm run test:qunit\'", "\'pnpm run test:ava\'", "\'pnpm run test:jest:inline\'", "\'pnpm run test:vitest:inline\'"]
+        os: [ubuntu-latest]
+    runs-on:  ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
@@ -44,23 +53,6 @@ jobs:
           wget https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
           sudo dpkg -i hyperfine_1.17.0_amd64.deb
 
-      - name: Run jest
+      - name: Run test
         run: |
-          hyperfine --warmup ${{ inputs.Warmup }} --runs  ${{ inputs.runTimes }} \
-          'pnpm run test:jest'
-      - name: Run jest --runInBand
-        run: |
-          hyperfine --warmup ${{ inputs.Warmup }} --runs ${{ inputs.runTimes }} \
-          'pnpm run test:jest:inline'
-      - name: Run vitest
-        run: |
-          hyperfine --warmup ${{ inputs.Warmup }} --runs ${{ inputs.runTimes }} \
-          'pnpm run test:vitest'
-      - name: Run vitest --poolOptions.threads.singleThread=true
-        run: |
-          hyperfine --warmup ${{ inputs.Warmup }} --runs ${{ inputs.runTimes }} \
-          'pnpm run test:vitest:inline'
-
-      - name: Output
-        run: |
-          cat /home/runner/work/_actions/catchpoint/workflow-telemetry-action/v1/dist/proc-tracer/proc-trace.out
+          hyperfine --warmup 1 --runs  2 ${{ matrix.test }}
