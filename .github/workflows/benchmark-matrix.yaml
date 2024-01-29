@@ -1,0 +1,57 @@
+name: Run Benchmarks Matrix
+
+on:
+  workflow_dispatch:
+    inputs:
+      runTimes:
+        description: 'Test run times'
+        required: true
+        default: 1
+        type: choice
+        options:
+        - 1
+        - 5
+        - 10
+        - 100
+      warmupTimes:
+        description: 'Warmup times'
+        required: true
+        default: 1
+        type: choice
+        options:
+        - 0
+        - 1
+        - 3
+
+jobs:
+  benchmark:
+    strategy:
+      matrix:
+        test: ["'pnpm run test:jasmine'", "'pnpm run test:jest'", "'pnpm run test:vitest'", "'pnpm run test:mocha'",
+        "'pnpm run test:qunit'", "'pnpm run test:ava'", "'pnpm run test:jest:inline'", "'pnpm run test:vitest:inline'"]
+        os: [ubuntu-latest]
+    runs-on:  ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Collect Workflow Telemetry
+        uses: konpeki622/workflow-telemetry-action@v1.0.9
+      
+      - name: Install
+        run: |
+          # Install dependencies
+          npm install pnpm -g
+          pnpm install
+
+          # Install hyperfine
+          wget https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
+          sudo dpkg -i hyperfine_1.17.0_amd64.deb
+
+      - name: Run test
+        run: |
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} ${{ matrix.test }}
