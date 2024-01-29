@@ -1,15 +1,23 @@
 import {getLowerAndUpperCase} from "../../../js-common/getLowerAndUpperCase.js";
 
 describe('getLowerAndUpperCase test', () => {
-    it('first getLowerAndUpperCase', () => {
+    it('No.1 getLowerAndUpperCase', () => {
         expect(getLowerAndUpperCase('Test')).toEqual('testTEST');
     })
 
-    it('second getLowerAndUpperCase', () => {
+    it('No.2 getLowerAndUpperCase', () => {
         expect(getLowerAndUpperCase('WORD')).toEqual('wordWORD');
     })
 
-    it('third getLowerAndUpperCase', () => {
+    it('No.3 getLowerAndUpperCase', () => {
         expect(getLowerAndUpperCase('case')).not.toEqual('case');
+    })
+
+    it('No.4 getLowerAndUpperCase', () => {
+        expect(getLowerAndUpperCase('WORD') === 'wordWORD').toBeTrue();
+    })
+
+    it('No.5 getLowerAndUpperCase', () => {
+        expect(getLowerAndUpperCase('case') === 'case').toBeFalse();
     })
 })

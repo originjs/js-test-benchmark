@@ -1,15 +1,23 @@
 import {factorial} from "../../../js-common/factorial.js";
 
 describe('factorial test', () => {
-    it('first factorial', () => {
+    it('No.1 factorial', () => {
         expect(factorial(3)).toEqual(6);
     })
 
-    it('second factorial', () => {
+    it('No.2 factorial', () => {
         expect(factorial(5)).toEqual(120);
     })
 
-    it('third factorial', () => {
+    it('No.3 factorial', () => {
         expect(factorial(20)).not.toEqual(20);
+    })
+
+    it('No.4 factorial', () => {
+        expect(factorial(5) === 120).toBeTrue();
+    })
+
+    it('No.5 factorial', () => {
+        expect(factorial(20) === 20).toBeFalse();
     })
 })

@@ -32,10 +32,6 @@ jobs:
         run: |
           pnpm run test:ben-linux
      
-      - name: Output
-        run: |
-          cat /home/runner/work/_actions/konpeki622/workflow-telemetry-action/v1.0.5/dist/proc-tracer/proc-trace.out
-
   benchmark-windows:
     runs-on: windows-latest
     steps:
