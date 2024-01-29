@@ -13,10 +13,11 @@
     "test:qunit": "pnpm -r --filter qunit run test",
     "test:ava": "pnpm -r --filter ava run test",
     "test:tape": "pnpm -r --filter tape run test",
+    "test:tapjs": "pnpm -r --filter tapjs run test",
     "test:jest:inline": "pnpm -r --filter jest run test --runInBand",
     "test:vitest:inline": "pnpm -r --filter vitest run test --poolOptions.threads.singleThread=true",
-    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"pnpm run test:jasmine\"  \"pnpm run test:jest\" \"pnpm run test:vitest\" \"pnpm run test:mocha\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:tape\" \"pnpm run test:jest:inline\" \"pnpm run test:vitest:inline\"",
-    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine'  'pnpm run test:jest' 'pnpm run test:vitest' 'pnpm run test:mocha' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm run test:jest:inline' 'pnpm run test:vitest:inline'"
+    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"pnpm -s run test:tapjs\" \"pnpm run test:jasmine\"  \"pnpm run test:jest\" \"pnpm run test:vitest\" \"pnpm run test:mocha\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:tape\" \"pnpm run test:jest:inline\" \"pnpm run test:vitest:inline\"",
+    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine'  'pnpm run test:jest' 'pnpm run test:vitest' 'pnpm run test:mocha' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm -s run test:tapjs' 'pnpm run test:jest:inline' 'pnpm run test:vitest:inline'"
   },
   "keywords": [],
   "author": ""
