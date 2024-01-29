@@ -2,15 +2,24 @@ import {muti} from "../../../js-common/muti.js";
 import {describe, it, expect} from "vitest";
 
 describe('muti test', () => {
-    it('first muti', () => {
+    it('No.1 muti', () => {
         expect(muti(1, 2)).toEqual(2);
     })
 
-    it('second muti', () => {
+    it('No.2 muti', () => {
         expect(muti(5 , 123)).toEqual(615);
     })
 
-    it('third muti', () => {
+    it('No.3 muti', () => {
         expect(muti(156 , 489)).not.toEqual(1);
     })
+
+    it('No.4 muti', () => {
+        expect(muti(5, 123) === 615).toBeTruthy();
+    })
+
+    it('No.5 muti', () => {
+        expect(muti(156, 489) === 1).toBeFalsy();
+    })
+
 })

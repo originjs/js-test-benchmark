@@ -1,15 +1,23 @@
 import {getLowerAndUpperCase} from "../../../js-common/getLowerAndUpperCase.js";
 import test from 'ava'
 
-test('first getLowerAndUpperCase', t => {
-    t.is(getLowerAndUpperCase('Test'), 'testTEST');
+test('No.1 getLowerAndUpperCase', assert => {
+    assert.is(getLowerAndUpperCase('Test'), 'testTEST');
 })
 
-test('second getLowerAndUpperCase', t => {
-    t.is(getLowerAndUpperCase('WORD'), 'wordWORD');
+test('No.2 getLowerAndUpperCase', assert => {
+    assert.is(getLowerAndUpperCase('WORD'), 'wordWORD');
 })
 
-test('third getLowerAndUpperCase', t => {
-    t.not(getLowerAndUpperCase('case'), 'case');
+test('No.3 getLowerAndUpperCase', assert => {
+    assert.not(getLowerAndUpperCase('case'), 'case');
+})
+
+test('No.4 getLowerAndUpperCase', assert => {
+    assert.true(getLowerAndUpperCase('WORD') === 'wordWORD');
+})
+
+test('No.5 getLowerAndUpperCase', assert => {
+    assert.false(getLowerAndUpperCase('case') === 'case');
 })
 

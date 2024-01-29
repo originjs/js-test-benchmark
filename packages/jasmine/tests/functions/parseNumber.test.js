@@ -1,15 +1,24 @@
 import {parseNumber} from "../../../js-common/parseNumber.js";
 
 describe('parseNumber test', () => {
-    it('first parseNumber', () => {
+    it('No.1 parseNumber', () => {
         expect(parseNumber('1')).toEqual(1);
     })
 
-    it('second parseNumber', () => {
+    it('No.2 parseNumber', () => {
         expect(parseNumber('233as')).toBeNaN();
     })
 
-    it('third parseNumber', () => {
+    it('No.3 parseNumber', () => {
         expect(parseNumber('aa5358aa')).not.toEqual(5);
     })
+
+    it('No.4 parseNumber', () => {
+        expect(isNaN(parseNumber('233as')) === true).toBeTrue();
+    })
+
+    it('No.5 parseNumber', () => {
+        expect(parseNumber(156, 489) === 1).toBeFalse();
+    })
+
 })
