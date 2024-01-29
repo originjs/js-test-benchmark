@@ -3,15 +3,24 @@ import {describe, it} from "mocha";
 import {expect} from "chai";
 
 describe('muti test', () => {
-    it('first muti', () => {
+    it('No.1 muti', () => {
         expect(muti(1, 2)).equal(2);
     })
 
-    it('second muti', () => {
+    it('No.2 muti', () => {
         expect(muti(5 , 123)).equal(615);
     })
 
-    it('third muti', () => {
+    it('No.3 muti', () => {
         expect(muti(156 , 489)).not.equal(1);
     })
+
+    it('No.4 muti', () => {
+        expect(muti(5, 123) === 615).true;
+    })
+
+    it('No.5 muti', () => {
+        expect(muti(156, 489) === 1).false;
+    })
+
 })
