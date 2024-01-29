@@ -40,7 +40,7 @@ jobs:
           node-version: '20'
 
       - name: Collect Workflow Telemetry
-        uses: konpeki622/workflow-telemetry-action@v1.0.5
+        uses: konpeki622/workflow-telemetry-action@v1.0.10
       
       - name: Install
         run: |
