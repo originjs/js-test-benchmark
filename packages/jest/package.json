@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:better": "jest --config ./jest.better.config.js --cache",
     "test:inline": "jest"
   },
   "keywords": [],

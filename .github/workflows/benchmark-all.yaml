@@ -56,9 +56,18 @@ jobs:
       - name: Run jest
         run: |
           hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:jest'
+      - name: Run jest better
+        run: |
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:jest-better'
       - name: Run vitest
         run: |
           hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:vitest'
+      - name: Run vitest better
+        run: |
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:vitest-better'
+      - name: Run vitest without isolation
+        run: |
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:vitest-no-isolate'
       - name: Run mocha
         run: |
           hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:mocha'
