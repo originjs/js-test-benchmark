@@ -71,6 +71,9 @@ jobs:
       - name: Run mocha
         run: |
           hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:mocha'
+      - name: Run mocha better
+        run: |
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:mocha-better'
       - name: Run qunit
         run: |
           hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} 'pnpm run test:qunit'

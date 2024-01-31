@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/**.test.js"
+    "test": "mocha tests/**/**.test.js",
+    "test:better": "mocha tests/**/**.test.js --config .mocharc.better.js"
   },
   "author": "",
   "license": "ISC",
