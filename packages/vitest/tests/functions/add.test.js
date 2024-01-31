@@ -21,8 +21,4 @@ describe('add test', () => {
     it('add No.5', () => {
         expect(add(3, 2) > 6).toBeFalsy();
     });
-
-    it('1', () => {
-
-    });
 })
