@@ -25,7 +25,7 @@ exports.getRandomJson = function () {
     j.numbers = numbers;
     j.strings = strings;
 
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 400000; i++) {
         numbers.push(Math.ceil(Math.random() * 10000));
         strings.push(randomString(4));
     }
