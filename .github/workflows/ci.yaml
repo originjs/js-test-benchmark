@@ -22,7 +22,7 @@ jobs:
         run: |
           # Install dependencies
           npm install pnpm -g
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
           # Install hyperfine
           wget https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
@@ -49,7 +49,7 @@ jobs:
         run: |
           # Install dependencies
           npm install pnpm -g
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
       - name: Run test
         run: |

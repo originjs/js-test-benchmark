@@ -1,3 +1,4 @@
 node_modules
 pnpm-lock.yaml
 /packages/*/package-lock.json
+**/.cache/
