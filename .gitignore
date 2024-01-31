@@ -1,4 +1,7 @@
 node_modules
 pnpm-lock.yaml
 /packages/*/package-lock.json
+/testCaseFatory/package-lock.json
+/packages/*/tests/functions/*.test.js
+/packages/tapjs/.tap/
 **/.cache/
