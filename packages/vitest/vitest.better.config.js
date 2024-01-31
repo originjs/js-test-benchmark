@@ -7,5 +7,5 @@ export default defineConfig({
     cacheDirectory: "./.cache",
     pool: "vmThreads",
     useAtomics: true,
-    // maxThreads: 4
+    maxThreads: 1
 });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "test:better": "jest --config ./jest.better.config.js --cache",
     "test:inline": "jest"
   },
