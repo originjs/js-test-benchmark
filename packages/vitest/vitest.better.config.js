@@ -6,11 +6,6 @@ export default defineConfig({
     ],
     cacheDirectory: "./.cache",
     pool: "vmThreads",
-    poolOptions: {
-        vmThreads: {
-            memotryLimit: "8G"
-        }
-    },
     useAtomics: true,
-    maxThreads: 4
+    // maxThreads: 4
 });
