@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "create-test-case": "./bin/index.cjs"
+  },
   "scripts": {
     "test": "pnpm -r run test && ava",
     "test:inline": "pnpm -r run test:inline",

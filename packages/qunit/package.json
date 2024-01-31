@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "qunit"
+    "test": "qunit ./tests"
   },
   "author": "",
   "license": "ISC",
