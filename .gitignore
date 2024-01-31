@@ -4,3 +4,4 @@ pnpm-lock.yaml
 /testCaseFatory/package-lock.json
 /packages/*/tests/functions/*.test.js
 /packages/tapjs/.tap/
+**/.cache/

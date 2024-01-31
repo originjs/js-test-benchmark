@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "test:inline": "vitest run"
+    "test:better": "vitest run --config ./vitest.better.config.js",
+    "test:inline": "vitest run",
+    "test:no-isolate": "vitest run --config ./vitest.better.config.js -no-isolate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitest": "^1.2.1"
+    "vitest": "^1.2.1",
+    "vite": "^5.0.12"
   }
 }
