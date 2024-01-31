@@ -4,17 +4,14 @@ const fs = require('fs');
 const utils = require('./utils.js');
 const functions = require('./functions.js');
 const factory = require("./caseFactory/factory");
-const {parseNumber, sub, sum} = require("./functions");
 
 // 获取并校验参数，参数需要是50的倍数且小于100000
-const args = require("minimist")(process.argv.slice(1), {
-    string: ["c"],
-});
-if (args.c === undefined || args.c === null || args.c === "") {
+const args = process.argv;
+if (args[2] === undefined || args[2] === null || args[2] === "") {
     console.log("param count can not be null");
     process.exit();
 }
-let count = Number(args.c);
+let count = Number(args[2]);
 if (count % 50 !== 0) {
     console.log("param must be a multiple of 100");
     process.exit();
