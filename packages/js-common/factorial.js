@@ -1,4 +1,6 @@
+import {spendTime} from "./spendTime.js";
 export function factorial(...nums) {
+    spendTime();
     let num = nums[0];
     if (num > 10) {
         num = num % 10;
