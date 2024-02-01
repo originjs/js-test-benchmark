@@ -5,9 +5,9 @@ export default defineConfig({
         "**/vitest/tests/**/*.js"
     ],
     cacheDirectory: "./.cache",
-    pool: "vmThreads",
+    pool: "threads",
     poolOptions: {
-        vmThreads: {
+        threads: {
             maxThreads: 16
         }
     }

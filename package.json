@@ -16,6 +16,7 @@
     "test:vitest-no-isolate": "pnpm -r --filter vitest run test:no-isolate",
     "test:vitest-better": "pnpm -r --filter vitest run test:better",
     "test:mocha": "pnpm -r --filter mocha run test",
+    "test:mocha-better": "pnpm -r --filter mocha run test:better",
     "test:qunit": "pnpm -r --filter qunit run test",
     "test:ava": "pnpm -r --filter ava run test",
     "test:tape": "pnpm -r --filter tape run test",
@@ -23,8 +24,8 @@
     "test:uvu": "pnpm -r --filter uvu run test",
     "test:jest:inline": "pnpm -r --filter jest run test --runInBand",
     "test:vitest:inline": "pnpm -r --filter vitest run test --poolOptions.threads.singleThread=true",
-    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"npm run test:uvu\" \"npm run test:tapjs\" \"pnpm run test:jasmine\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:vitest:inline\" \"pnpm run test:tape\" \"pnpm run test:jest:inline\"  \"pnpm run test:jest\" \"pnpm run test:jest-better\" ",
-    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:uvu' 'pnpm run test:jasmine' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm -s run test:tapjs' 'pnpm run test:jest:inline' 'pnpm run test:vitest:inline'"
+    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"npm run test:uvu\" \"npm run test:tapjs\" \"pnpm run test:jasmine\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:mocha-better\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:vitest:inline\" \"pnpm run test:tape\" \"pnpm run test:jest:inline\"  \"pnpm run test:jest\" \"pnpm run test:jest-better\" ",
+    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:uvu' 'pnpm run test:jasmine' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm -s run test:tapjs' 'pnpm run test:jest:inline' 'pnpm run test:vitest:inline'"
   },
   "keywords": [],
   "author": ""
