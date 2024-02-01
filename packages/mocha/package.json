@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/**/**.test.js",
-    "test:better": "mocha tests/**/**.test.js --config .mocharc.better.js"
+    "test:better": "mocha tests/**/**.test.js --config .mocharc.better.cjs"
   },
   "author": "",
   "license": "ISC",
