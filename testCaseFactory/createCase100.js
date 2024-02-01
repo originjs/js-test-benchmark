@@ -5,14 +5,14 @@ const utils = require('./utils.js');
 const functions = require('./functions.js');
 const factory = require("./caseFactory/factory");
 
-// 获取并校验参数，参数需要是50的倍数且小于100000
+// 获取并校验参数，参数需要是500的倍数且小于100000
 const args = process.argv;
 if (args[2] === undefined || args[2] === null || args[2] === "") {
     console.log("param count can not be null");
     process.exit();
 }
 let count = Number(args[2]);
-if (count % 50 !== 0) {
+if (count % 500 !== 0) {
     console.log("param must be a multiple of 100");
     process.exit();
 }
@@ -37,7 +37,7 @@ try {
 // 基础常亮
 let binPath = __dirname;
 let benchmarkPath = path.dirname(binPath);
-let singleFileCaseCount = count / 10;
+let singleFileCaseCount = count / 100;
 let desCount = singleFileCaseCount / 5;
 let functionList = [
     {
@@ -143,12 +143,6 @@ let frameworkList = [
         name: 'vitest',
         factory: factory.vitest,
         extraImport: 'import {describe, it, expect} from "vitest";\n'
-    },
-    {
-        name: 'uvu',
-        factory: factory.uvu,
-        extraImport: 'import {test} from \'uvu\';\n' +
-            'import * as assert from \'uvu/assert\';\n;'
     }
 ];
 for (let i = 0; i < frameworkList.length; i++) {
@@ -157,41 +151,46 @@ for (let i = 0; i < frameworkList.length; i++) {
     utils.deleteFolder(frameworkPath);
 
     for (let j = 0; j < functionList.length; j++) {
-        let fun = functionList[j];
-        let caseContent = 'import {' + fun.name + '} from \'../../../js-common/' + fun.name + '.js\';\n';
-        caseContent = caseContent + framework.extraImport;
-        let caseIndex = 1;
         let dataIndex = 0;
-        for (let k = 0; k < desCount; k++) {
-            let a = jsonData.numbers[dataIndex];
-            let b = jsonData.numbers[dataIndex + 1];
-            let funContent = fun.name + '(' + a + ',' + b + ')';
-            let expValue;
-            if (!fun.isParamNumber) {
-                a = jsonData.strings[dataIndex];
-                b = jsonData.strings[dataIndex + 1];
-                funContent = fun.name + '(\'' + a + '\',\'' + b + '\')';
-            }
-            if (!fun.isReturnNumber) {
-                expValue = '\'' + fun.fun(a, b) + '\'';
-            } else {
-                expValue = fun.fun(a, b);
-            }
+        for (let f = 1; f <= 10; f++) {
+            let fun = functionList[j];
+            let caseContent = 'import {' + fun.name + '} from \'../../../js-common/' + fun.name + '.js\';\n';
+            caseContent = caseContent + framework.extraImport;
+            let caseIndex = 1;
+            for (let k = 0; k < desCount; k++) {
+                let a = jsonData.numbers[dataIndex];
+                let b = jsonData.numbers[dataIndex + 1];
+                let funContent = fun.name + '(' + a + ',' + b + ')';
+                let expValue;
+                if (!fun.isParamNumber) {
+                    a = jsonData.strings[dataIndex];
+                    b = jsonData.strings[dataIndex + 1];
+                    funContent = fun.name + '(\'' + a + '\',\'' + b + '\')';
+                }
+                if (!fun.isReturnNumber) {
+                    expValue = '\'' + fun.fun(a, b) + '\'';
+                } else {
+                    expValue = fun.fun(a, b);
+                }
 
-            dataIndex = dataIndex + 2;
+                dataIndex = dataIndex + 2;
 
-            caseContent = caseContent + framework.factory(fun.name, funContent, expValue, k, caseIndex, fun.isReturnNumber);
-            caseIndex = caseIndex + 5;
+                caseContent = caseContent + framework.factory(fun.name, funContent, expValue, k, caseIndex, fun.isReturnNumber);
+                caseIndex = caseIndex + 5;
+            }
+            let casePath = path.join(frameworkPath, fun.name + f + '.test.js');
+            fs.writeFileSync(casePath, caseContent, (err) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+            });
+            console.log('add ' + casePath);
         }
-        let casePath = path.join(frameworkPath, fun.name + '.test.js');
-        fs.writeFileSync(casePath, caseContent, (err) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-        });
-        console.log('add ' + casePath);
     }
 
 }
+
+
+
 
