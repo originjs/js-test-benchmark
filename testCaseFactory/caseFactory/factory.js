@@ -6,6 +6,7 @@ const qunit = require('./qunitCaseFactory')
 const tape = require('./tapeCaseFactory')
 const tapjs = require('./tapjsCaseFactory')
 const vitest = require('./vitestCaseFactory')
+const uvu = require('./uvuCaseFactory')
 
 exports.ava = ava.avaCaseFactory;
 exports.jasmine = jasmine.jasmineCaseFactory;
@@ -15,3 +16,4 @@ exports.qunit = qunit.qunitCaseFactory;
 exports.tape = tape.tapeCaseFactory;
 exports.tapjs = tapjs.tapjsCaseFactory;
 exports.vitest = vitest.vitestCaseFactory;
+exports.uvu = uvu.uvuCaseFactory;
