@@ -3,5 +3,5 @@ module.exports = {
         "**/jest/tests/**/*.js"
     ],
     cacheDirectory: "./.cache",
-    maxWorkers: 8
+    maxWorkers: 16
 };

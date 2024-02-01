@@ -1,3 +1,3 @@
 module.exports = {
-    jobs: 8
+    jobs: 16
 }
