@@ -8,7 +8,7 @@ export default defineConfig({
     pool: "vmThreads",
     poolOptions: {
         vmThreads: {
-            maxThreads: 4
+            maxThreads: 16
         }
     }
 });
