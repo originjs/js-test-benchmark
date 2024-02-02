@@ -9,7 +9,7 @@ on:
         default: 1
         type: choice
         options:
-        - 1
+        - 2
         - 5
         - 10
         - 100
@@ -43,8 +43,6 @@ jobs:
         "'pnpm run test:vitest:inline'", "'pnpm run test:uvu'"]
         os: [ubuntu-latest]
     runs-on:  ${{ matrix.os }}
-    env:
-      SPEND_MILLISECOND: ${{ inputs.spendTimePreTest }}
     steps:
       - uses: actions/checkout@v4
 
@@ -68,7 +66,7 @@ jobs:
 
       - name: Prepare test
         run: |
-          node ./testCaseFactory/createCase.js ${{ inputs.fileCount }} ${{ inputs.caseCountInFile }}
+          node ./testCaseFactory/createCase.js ${{ inputs.fileCount }} ${{ inputs.caseCountInFile }} ${{ inputs.spendTimePreTest }}
 
       - name: Run test
         run: |
