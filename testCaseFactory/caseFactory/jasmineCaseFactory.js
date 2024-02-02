@@ -1,4 +1,4 @@
-exports.jasmineCaseFactory = function (funName, funContent, expValue, desIndex, caseIndex, isReturnNumber) {
+export function jasmineCaseFactory(funName, funContent, expValue, desIndex, caseIndex, isReturnNumber) {
     let caseContent = '';
     let index = caseIndex;
     let notExpValue = expValue + 1;
@@ -9,28 +9,38 @@ exports.jasmineCaseFactory = function (funName, funContent, expValue, desIndex, 
     }
     caseContent = caseContent + 'describe(\'' + funName + ' test Des' + (desIndex + 1) + '\', () => {\n';
 
-    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\', () => {\n' +
-        '        expect(' + funContent + ').toEqual(' + expValue + ');\n' +
+    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\',async () => {\n' +
+        '        await C.loadAllWasm();\n' +
+        '        let res = await ' + funContent + ';\n' +
+        '        expect(res).toEqual(' + expValue + ');\n' +
         '    })\n\n';
     index = index + 1;
 
-    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\', () => {\n' +
-        '        expect(' + funContent + ').not.toEqual(' + notExpValue + ');\n' +
+    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\',async () => {\n' +
+        '        await C.loadAllWasm();\n' +
+        '        let res = await ' + funContent + ';\n' +
+        '        expect(res).not.toEqual(' + notExpValue + ');\n' +
         '    })\n\n';
     index = index + 1;
 
-    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\', () => {\n' +
-        '        expect(' + funContent + ' === ' + expValue + ').toBeTrue();\n' +
+    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\',async () => {\n' +
+        '        await C.loadAllWasm();\n' +
+        '        let res = await ' + funContent + ';\n' +
+        '        expect(res === ' + expValue + ').toBeTrue();\n' +
         '    })\n\n';
     index = index + 1;
 
-    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\', () => {\n' +
-        '        expect(' + funContent + ' === ' + notExpValue + ').toBeFalse();\n' +
+    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\',async () => {\n' +
+        '        await C.loadAllWasm();\n' +
+        '        let res = await ' + funContent + ';\n' +
+        '        expect(res === ' + notExpValue + ').toBeFalse();\n' +
         '    })\n\n';
     index = index + 1;
 
-    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\', () => {\n' +
-        '        expect(' + funContent + ').toEqual(' + expValue + ');\n' +
+    caseContent = caseContent + 'it(\'' + funName + ' No.' + index + '\',async () => {\n' +
+        '        await C.loadAllWasm();\n' +
+        '        let res = await ' + funContent + ';\n' +
+        '        expect(res).toEqual(' + expValue + ');\n' +
         '    })\n\n';
 
     caseContent = caseContent + '});\n\n';

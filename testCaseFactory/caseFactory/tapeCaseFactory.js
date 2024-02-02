@@ -1,4 +1,4 @@
-exports.tapeCaseFactory = function (funName, funContent, expValue, desIndex, caseIndex, isReturnNumber) {
+export function tapeCaseFactory(funName, funContent, expValue, desIndex, caseIndex, isReturnNumber) {
     let caseContent = '';
     let index = caseIndex;
     let notExpValue = expValue + 1;
@@ -7,32 +7,42 @@ exports.tapeCaseFactory = function (funName, funContent, expValue, desIndex, cas
         notExpValue = notExpValue + '1';
         notExpValue = '\'' + notExpValue + '\'';
     }
-    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', assert => {\n' +
-        '    assert.equal(' + funContent + ', ' + expValue + ');\n' +
+    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', async assert => {\n' +
+        '    await C.loadAllWasm();\n' +
+        '    let res = await ' + funContent + ';\n' +
+        '    assert.equal(res, ' + expValue + ');\n' +
         '    assert.end();\n\n' +
         '})\n';
     index = index + 1;
 
-    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', assert => {\n' +
-        '    assert.notEqual(' + funContent + ', ' + notExpValue + ');\n' +
+    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', async assert => {\n' +
+        '    await C.loadAllWasm();\n' +
+        '    let res = await ' + funContent + ';\n' +
+        '    assert.notEqual(res, ' + notExpValue + ');\n' +
         '    assert.end();\n\n' +
         '})\n';
     index = index + 1;
 
-    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', assert => {\n' +
-        '    assert.true(' + funContent + ' === ' + expValue + ');\n' +
+    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', async assert => {\n' +
+        '    await C.loadAllWasm();\n' +
+        '    let res = await ' + funContent + ';\n' +
+        '    assert.true(res === ' + expValue + ');\n' +
         '    assert.end();\n\n' +
         '})\n';
     index = index + 1;
 
-    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', assert => {\n' +
-        '    assert.false(' + funContent + ' === ' + notExpValue + ');\n' +
+    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', async assert => {\n' +
+        '    await C.loadAllWasm();\n' +
+        '    let res = await ' + funContent + ';\n' +
+        '    assert.false(res === ' + notExpValue + ');\n' +
         '    assert.end();\n\n' +
         '})\n';
     index = index + 1;
 
-    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', assert => {\n' +
-        '    assert.equal(' + funContent + ', ' + expValue + ');\n' +
+    caseContent = caseContent + 'test(\'' + funName + ' No.' + index + '\', async assert => {\n' +
+        '    await C.loadAllWasm();\n' +
+        '    let res = await ' + funContent + ';\n' +
+        '    assert.equal(res, ' + expValue + ');\n' +
         '    assert.end();\n\n' +
         '})\n';
 

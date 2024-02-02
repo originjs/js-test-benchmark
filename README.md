@@ -3,13 +3,9 @@
 ### Usage
 生成测试用例
 ```bash
-#模式一：
-node .\testCaseFactory\createCase.js xx
-# 在10个测试文件中生成xx个测试用例，xx必须是50的倍数且不大于100000
-
-#模式二：
-node .\testCaseFactory\createCase100.js xx
-# 在100个测试文件中生成xx个测试用例，xx必须是500的倍数且不大于100000
+node .\testCaseFactory\createCase.js fileCount caseCountInFile
+# 生成 fileCount 个测试文件（fileCount必须是10的倍数），每个文件中生成 caseCountInFile 个测试用例(caseCountInFile必须是5的倍数）
+# 总测试用例数量（fileCount * caseCountInFile）必须小于100000
 ```
 
 ```bash

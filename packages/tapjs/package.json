@@ -10,7 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "tap": "18.6.0",
-    "@tapjs/test": "1.4.0"
+    "@tapjs/test": "1.4.0",
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
   "type": "module"
 }

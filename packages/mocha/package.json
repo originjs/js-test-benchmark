@@ -13,7 +13,8 @@
     "chai": "^5.0.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "sinon": "^17.0.1"
+    "sinon": "^17.0.1",
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
   "type": "module"
 }
