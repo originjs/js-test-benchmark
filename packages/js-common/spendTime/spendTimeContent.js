@@ -1,11 +1,11 @@
 export function spendTime() {
+    let ms = process.env.SPEND_MILLISECOND ? Number(process.env.SPEND_MILLISECOND) : 1000;
+    let start = Date.now();
     let sum = 0;
-    // 1000 * 1000 * 1 大约0.02s
-    for (let i = 0; i < 1000; i++) {
-        for (let j = 0; j < 10; j++) {
-            for (let k = 0; k < 1; k++) {
-                sum = sum + Math.random() * 10;
-            }
+    while (Date.now() - start < ms) {
+        sum = sum + Math.random() * 10;
+        if (sum > 100000000) {
+            sum = sum % 10000;
         }
     }
 }
