@@ -1,16 +1,10 @@
 import * as functions from "./functions.js";
 import * as factory from "./caseFactory/factory.js";
-import {
-    algoSHA1,
-    algoSHA224,
-    algoSHA256,
-    algoSHA384,
-    algoSHA512,
-    algoTripledes,
-    hmacMD5,
-    hmacSHA224, hmacSHA256
-} from "./functions.js";
 
+export let spendMillisecond =
+{
+    ms: 500
+};
 export let functionList = [
     {
         name: 'algoSHA1',

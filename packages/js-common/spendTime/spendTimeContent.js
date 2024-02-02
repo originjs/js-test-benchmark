@@ -1,5 +1,6 @@
+import * as config from '../../../testCaseFactory/config.js'
 export function spendTime() {
-    let ms = process.env.SPEND_MILLISECOND ? Number(process.env.SPEND_MILLISECOND) : 1000;
+    let ms = config.spendMillisecond.ms;
     let start = Date.now();
     let sum = 0;
     while (Date.now() - start < ms) {

@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as utils from './utils.js';
 import {functionList, frameworkList} from './config.js';
 import './expandGlobal.js';
+import * as config from './config.js'
 
 // 获取并校验参数，第一个参数是测试文件数量（必须是10的倍数），第二个参数是单个文件内测试用例数量（必须是5的倍数），
 // 总用例数（文件数*单个文件内用例数）必须小于100000
@@ -32,6 +33,12 @@ if (caseCountInfile * fileCount > 100000) {
     console.log("total case count must be less than 100,000");
     process.exit();
 }
+if (args[4] === undefined || args[4] === null || args[4] === "") {
+    console.log("param spendMillisecond can not be null");
+    process.exit();
+}
+let spendMillisecond = Number(args[4]);
+config.spendMillisecond.ms = spendMillisecond;
 
 //获取随机数数组
 let jsonData;
