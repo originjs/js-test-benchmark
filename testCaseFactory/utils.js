@@ -1,6 +1,6 @@
-import * as path from 'path'
-import * as fs from 'fs'
-import './expandGlobal.js'
+import * as path from 'path';
+import * as fs from 'fs';
+import './expandGlobal.js';
 
 export function deleteFolder(dir) {
     let folder_exists = fs.existsSync(dir);
@@ -12,6 +12,49 @@ export function deleteFolder(dir) {
         console.log('delete old *.test.js from ' + dir);
     }
 };
+
+export function setSpendTimeEmpty() {
+    const binPath = global.getDirName(import.meta.url);
+    const spendTimePath = path.join(binPath, '../packages/js-common/spendTime/spendTime.js');
+    const spendTimeEmptyPath = path.join(binPath, '../packages/js-common/spendTime/spendTimeEmpty.js');
+    let data = fs.readFileSync(spendTimeEmptyPath, {
+        encoding: 'utf8',
+        flag: 'r'
+    }, (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+    fs.writeFileSync(spendTimePath, data, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('set spendTime to empty success');
+        }
+    });
+}
+
+export function setSpendTimeContent() {
+    const binPath = global.getDirName(import.meta.url);
+    const spendTimePath = path.join(binPath, '../packages/js-common/spendTime/spendTime.js');
+    const spendTimeContentPath = path.join(binPath, '../packages/js-common/spendTime/spendTimeContent.js');
+    let data = fs.readFileSync(spendTimeContentPath, {
+        encoding: 'utf8',
+        flag: 'r'
+    }, (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+    fs.writeFileSync(spendTimePath, data, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('set spendTime to empty success');
+        }
+    });
+}
+
 
 export function getRandomJson() {
     const binPath = global.getDirName(import.meta.url);
