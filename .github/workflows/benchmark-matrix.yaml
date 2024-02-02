@@ -54,7 +54,7 @@ jobs:
 
       - name: Prepare test
         run: |
-          node ./testCaseFactory/createCase.js 10000
+          node ./testCaseFactory/createCase.js 100 50
 
       - name: Run test
         run: |
