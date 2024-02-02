@@ -10,7 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "install": "^0.13.0",
-    "jasmine": "^5.1.0"
+    "jasmine": "^5.1.0",
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
   "type": "module"
 }

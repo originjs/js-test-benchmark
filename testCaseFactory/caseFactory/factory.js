@@ -1,19 +1,21 @@
-const ava = require('./avaCaseFactory')
-const jasmine = require('./jasmineCaseFactory')
-const jest = require('./jestCaseFactory')
-const mocha = require('./mochaCaseFactory')
-const qunit = require('./qunitCaseFactory')
-const tape = require('./tapeCaseFactory')
-const tapjs = require('./tapjsCaseFactory')
-const vitest = require('./vitestCaseFactory')
-const uvu = require('./uvuCaseFactory')
+import {avaCaseFactory as ava} from "./avaCaseFactory.js";
+import {jasmineCaseFactory as jasmine} from "./jasmineCaseFactory.js";
+import {jestCaseFactory as jest} from "./jestCaseFactory.js";
+import {mochaCaseFactory as mocha} from "./mochaCaseFactory.js";
+import {qunitCaseFactory as qunit} from "./qunitCaseFactory.js";
+import {tapeCaseFactory as tape} from "./tapeCaseFactory.js";
+import {tapjsCaseFactory as tapjs} from "./tapjsCaseFactory.js";
+import {vitestCaseFactory as vitest} from "./vitestCaseFactory.js";
+import {uvuCaseFactory as uvu} from "./uvuCaseFactory.js";
 
-exports.ava = ava.avaCaseFactory;
-exports.jasmine = jasmine.jasmineCaseFactory;
-exports.jest = jest.jestCaseFactory;
-exports.mocha = mocha.mochaCaseFactory;
-exports.qunit = qunit.qunitCaseFactory;
-exports.tape = tape.tapeCaseFactory;
-exports.tapjs = tapjs.tapjsCaseFactory;
-exports.vitest = vitest.vitestCaseFactory;
-exports.uvu = uvu.uvuCaseFactory;
+export {
+    ava,
+    jasmine,
+    jest,
+    mocha,
+    qunit,
+    tape,
+    tapjs,
+    vitest,
+    uvu
+}

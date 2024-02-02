@@ -1,6 +1,8 @@
-exports.deleteFolder = function (dir) {
-    const fs = require('fs');
-    const path = require("path");
+import * as path from 'path'
+import * as fs from 'fs'
+import './expandGlobal.js'
+
+export function deleteFolder(dir) {
     let folder_exists = fs.existsSync(dir);
     if (folder_exists) {
         let fileList = fs.readdirSync(dir);
@@ -11,12 +13,8 @@ exports.deleteFolder = function (dir) {
     }
 };
 
-exports.getRandomJson = function () {
-
-    const path = require('path');
-    const fs = require('fs');
-
-    const binPath = __dirname;
+export function getRandomJson() {
+    const binPath = global.getDirName(import.meta.url);
     const jsonPath = path.join(binPath, 'randomData.json');
 
     let numbers = [];
@@ -45,6 +43,6 @@ function randomString(e) {
     var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz0123456789",
         a = t.length,
         n = "";
-    for (i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
+    for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
     return n;
 }

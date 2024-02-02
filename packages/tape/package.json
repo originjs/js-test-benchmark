@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tape": "^5.7.4"
+    "tape": "^5.7.4",
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
   "type": "module"
 }

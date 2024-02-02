@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
-  "type": "commonjs"
+  "type": "module"
 }

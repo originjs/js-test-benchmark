@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "uvu": "^0.5.6"
+    "uvu": "^0.5.6",
+    "@originjs/crypto-js-wasm": "^1.1.0"
   },
-  "type": "module"
+  "type": "module",
+  "@originjs/crypto-js-wasm": "^1.1.0"
 }
