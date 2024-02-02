@@ -51,6 +51,7 @@ let benchmarkPath = path.dirname(binPath);
 let desCount = caseCountInfile / 5;
 
 async function create() {
+    utils.setSpendTimeEmpty();
     for (let i = 0; i < frameworkList.length; i++) {
         let framework = frameworkList[i];
         let frameworkPath = path.join(benchmarkPath, 'packages', framework.name, 'tests', 'functions');
@@ -98,6 +99,7 @@ async function create() {
         }
 
     }
+    utils.setSpendTimeContent();
 }
 
 create();
