@@ -14,7 +14,12 @@ node .\testCaseFactory\createCase100.js xx
 
 ```bash
 pnpm install
-pnpm run test:ben
+pnpm run test:ben-windows
+```
+or
+```bash
+pnpm install
+pnpm run test:ben-linux
 ```
 
 ### Output
