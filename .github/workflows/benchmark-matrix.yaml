@@ -44,7 +44,7 @@ jobs:
         os: [ubuntu-latest]
     runs-on:  ${{ matrix.os }}
     env:
-      SPEND_MILLISECOND: ${{ inputs.warmupTimes }}
+      SPEND_MILLISECOND: ${{ inputs.spendTimePreTest }}
     steps:
       - uses: actions/checkout@v4
 
