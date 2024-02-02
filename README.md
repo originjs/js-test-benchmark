@@ -3,9 +3,12 @@
 ### Usage
 生成测试用例
 ```bash
-node .\testCaseFactory\createCase.js fileCount caseCountInFile
+node .\testCaseFactory\createCase.js fileCount caseCountInFile spendMillisecond
 # 生成 fileCount 个测试文件（fileCount必须是10的倍数），每个文件中生成 caseCountInFile 个测试用例(caseCountInFile必须是5的倍数）
 # 总测试用例数量（fileCount * caseCountInFile）必须小于100000
+# 模拟业务函数的耗时（单位：ms）
+
+#示例：node .\testCaseFactory\createCase.js 100 10 2000 100个测试文件，共1000个测试用例，业务函数模拟执行2s
 ```
 
 ```bash
