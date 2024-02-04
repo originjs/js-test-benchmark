@@ -1,13 +1,22 @@
-import '../../../testCaseFactory/expandGlobal.js';
+import * as fs from 'fs';
 
 export function spendTime() {
     let ms = 0;
     try {
-        let config = global.loadJSON('../../../testCaseFactory/config.json', import.meta.url);
+        let data = fs.readFileSync('./testCaseFactory/config.json', {
+            encoding: 'utf8',
+            flag: 'r'
+        }, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+        let config = JSON.parse(data);
         ms = config.ms;
     } catch (err) {
         console.log(err);
     }
+    console.log('ms:' + ms);
     let start = Date.now();
     let sum = 0;
     while (Date.now() - start < ms) {
