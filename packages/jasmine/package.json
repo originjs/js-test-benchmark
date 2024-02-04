@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "test:better": "jasmine --parallel=16"
   },
   "author": "",
   "license": "ISC",

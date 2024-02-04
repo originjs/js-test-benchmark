@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "test:inline": "ava"
   },
   "author": "",
   "license": "ISC",
