@@ -54,6 +54,8 @@ jobs:
         "'pnpm run test:ava-inline'", 
         "'pnpm run test:tape'", 
         "'pnpm run test:tapjs'", 
+        "'pnpm run test:tapjs-better'", 
+        "'pnpm run test:tapjs-inline'", 
         "'pnpm run test:uvu'"]
         os: [ubuntu-latest]
     runs-on:  ${{ matrix.os }}
