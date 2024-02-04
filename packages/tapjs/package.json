@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap"
+    "test": "tap",
+    "test:better": "tap --jobs=16",
+    "test:inline": "tap --jobs=1"
   },
   "author": "",
   "license": "ISC",
