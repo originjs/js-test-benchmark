@@ -1,10 +1,6 @@
 import * as functions from "./functions.js";
 import * as factory from "./caseFactory/factory.js";
 
-export let spendMillisecond =
-{
-    ms: 500
-};
 export let functionList = [
     {
         name: 'algoSHA1',
