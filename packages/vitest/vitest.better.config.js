@@ -5,10 +5,10 @@ export default defineConfig({
         "**/vitest/tests/**/*.js"
     ],
     cacheDirectory: "./.cache",
-    pool: "vmThreads",
-    poolOptions: {
-        vmThreads: {
-            maxThreads: 16
-        }
-    }
+    // pool: "vmThreads",
+    // poolOptions: {
+    //     vmThreads: {
+    //         maxThreads: 10
+    //     }
+    // }
 });
