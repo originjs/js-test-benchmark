@@ -1,6 +1,18 @@
-import * as config from '../../../testCaseFactory/config.js'
+import * as fs from 'fs';
+
 export function spendTime() {
-    let ms = config.spendMillisecond.ms;
+    let ms = 0;
+    try {
+        let data = fs.readFileSync('../../testCaseFactory/config.json', {
+            encoding: 'utf8',
+            flag: 'r'
+        }, (err) => {
+        });
+        let config = JSON.parse(data);
+        ms = config.ms;
+    } catch (err) {
+        console.log(err);
+    }
     let start = Date.now();
     let sum = 0;
     while (Date.now() - start < ms) {
