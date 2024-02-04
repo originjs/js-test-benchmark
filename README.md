@@ -4,17 +4,22 @@
 生成测试用例
 ```bash
 #模式一：
-node .\testCaseFactory\createCase.js xx
+node ./testCaseFactory/createCase.js xx
 # 在10个测试文件中生成xx个测试用例，xx必须是50的倍数且不大于100000
 
 #模式二：
-node .\testCaseFactory\createCase100.js xx
+node ./testCaseFactory/createCase100.js xx
 # 在100个测试文件中生成xx个测试用例，xx必须是500的倍数且不大于100000
 ```
 
 ```bash
 pnpm install
-pnpm run test:ben
+pnpm run test:ben-windows
+```
+or
+```bash
+pnpm install
+pnpm run test:ben-linux
 ```
 
 ### Output

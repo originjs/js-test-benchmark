@@ -7,7 +7,7 @@
     "test": "vitest run",
     "test:better": "vitest run --config ./vitest.better.config.js",
     "test:inline": "vitest run",
-    "test:no-isolate": "vitest run --config ./vitest.better.config.js -no-isolate"
+    "test:no-isolate": "vitest run --config ./vitest.better.config.js --no-isolate"
   },
   "keywords": [],
   "author": "",
