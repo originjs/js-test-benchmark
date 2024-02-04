@@ -20,12 +20,12 @@
     "test:mocha-better": "pnpm -r --filter mocha run test:better",
     "test:qunit": "pnpm -r --filter qunit run test",
     "test:ava": "pnpm -r --filter ava run test",
-    "test:ava-better": "pnpm -r --filter ava run test:better",
+    "test:ava-inline": "pnpm -r --filter ava run test:inline",
     "test:tape": "pnpm -r --filter tape run test",
     "test:tapjs": "cd packages/tapjs && npm run test -s || exit 0",
     "test:uvu": "pnpm -r --filter uvu run test",
-    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"pnpm run test:jasmine\" \"pnpm run test:jasmine-better\" \"pnpm run test:jest\" \"pnpm run test:jest-better\" \"pnpm run test:jest-inline\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-inline\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:mocha-better\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:ava-better\" \"pnpm run test:tape\" \"pnpm run test:tapjs\" \"pnpm run test:uvu\" ",
-    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine' 'pnpm run test:jasmine-better' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:jest-inline' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-inline' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:ava-better' 'pnpm run test:tape' 'pnpm run test:tapjs'"
+    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"pnpm run test:jasmine\" \"pnpm run test:jasmine-better\" \"pnpm run test:jest\" \"pnpm run test:jest-better\" \"pnpm run test:jest-inline\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-inline\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:mocha-better\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:ava-inline\" \"pnpm run test:tape\" \"pnpm run test:tapjs\" \"pnpm run test:uvu\" ",
+    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine' 'pnpm run test:jasmine-better' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:jest-inline' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-inline' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:ava-inline' 'pnpm run test:tape' 'pnpm run test:tapjs'"
   },
   "keywords": [],
   "author": ""

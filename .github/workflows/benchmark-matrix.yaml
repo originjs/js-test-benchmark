@@ -51,7 +51,7 @@ jobs:
         "'pnpm run test:mocha-better'", 
         "'pnpm run test:qunit'", 
         "'pnpm run test:ava'", 
-        "'pnpm run test:ava-better'", 
+        "'pnpm run test:ava-inline'", 
         "'pnpm run test:tape'", 
         "'pnpm run test:tapjs'", 
         "'pnpm run test:uvu'"]
