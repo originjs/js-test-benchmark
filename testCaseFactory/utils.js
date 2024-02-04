@@ -55,6 +55,21 @@ export function setSpendTimeContent() {
     });
 }
 
+export function setConfigJson(ms) {
+    const binPath = global.getDirName(import.meta.url);
+    const jsonPath = path.join(binPath, 'config.json');
+    let j = {}
+    j.ms = ms;
+
+    let jsonContent = JSON.stringify(j);
+    fs.writeFileSync(jsonPath, jsonContent, 'utf8', (err) => {
+        if (err) {
+            console.log('err:' + err);
+        } else {
+            console.log('update config json file success!');
+        }
+    });
+}
 
 export function getRandomJson() {
     const binPath = global.getDirName(import.meta.url);

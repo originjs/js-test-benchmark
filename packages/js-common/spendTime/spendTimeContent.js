@@ -1,6 +1,13 @@
-import * as config from '../../../testCaseFactory/config.js'
+import '../../../testCaseFactory/expandGlobal.js';
+
 export function spendTime() {
-    let ms = config.spendMillisecond.ms;
+    let ms = 0;
+    try {
+        let config = global.loadJSON('../../../testCaseFactory/config.json', import.meta.url);
+        ms = config.ms;
+    } catch (err) {
+        console.log(err);
+    }
     let start = Date.now();
     let sum = 0;
     while (Date.now() - start < ms) {
