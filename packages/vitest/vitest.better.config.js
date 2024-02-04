@@ -4,11 +4,5 @@ export default defineConfig({
     include: [
         "**/vitest/tests/**/*.js"
     ],
-    cacheDirectory: "./.cache",
-    pool: "vmThreads",
-    poolOptions: {
-        vmThreads: {
-            maxThreads: 4
-        }
-    }
+    cacheDirectory: "./.cache"
 });

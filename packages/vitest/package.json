@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "test:better": "vitest run --config ./vitest.better.config.js",
+    "test:better": "vitest run --config ./vitest.better.config.js --poolOptions.threads.maxThreads=16",
     "test:inline": "vitest run",
-    "test:no-isolate": "vitest run --config ./vitest.better.config.js --no-isolate"
+    "test:no-isolate": "vitest run --config ./vitest.better.config.js --poolOptions.threads.maxThreads=16 --no-isolate"
   },
   "keywords": [],
   "author": "",
