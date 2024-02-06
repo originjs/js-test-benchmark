@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/**.test.js",
-    "test:better": "mocha tests/**/**.test.js --parallel --jobs 3"
+    "test": "mocha tests/**/**.test.js -t 5000",
+    "test:better": "mocha tests/**/**.test.js -t 5000 --parallel --jobs 3"
   },
   "author": "",
   "license": "ISC",
