@@ -12,7 +12,7 @@
     "test:jest": "pnpm -r --filter jest run test",
     "test:jest-better": "pnpm -r --filter jest run test:better",
     "test:jest-inline": "pnpm -r --filter jest run test --runInBand",
-    "test:vitest": "pnpm -r --filter vitest run test", 
+    "test:vitest": "pnpm -r --filter vitest run test",
     "test:vitest-better": "pnpm -r --filter vitest run test:better",
     "test:vitest-inline": "pnpm -r --filter vitest run test --poolOptions.threads.singleThread=true",
     "test:vitest-no-isolate": "pnpm -r --filter vitest run test:no-isolate",
@@ -30,5 +30,8 @@
     "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine' 'pnpm run test:jasmine-better' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:jest-inline' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-inline' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:ava-inline' 'pnpm run test:tape' 'pnpm run test:tapjs' 'pnpm run test:tapjs-better' 'pnpm run test:tapjs-inline' 'pnpm run test:uvu'"
   },
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "shelljs": "^0.8.5"
+  }
 }
