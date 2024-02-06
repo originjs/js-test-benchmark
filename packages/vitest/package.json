@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "test:better": "vitest run --config ./vitest.better.config.js --pool=vmThreads  --poolOptions.vmThreads.maxThreads=16",
+    "test:better": "vitest run --config ./vitest.better.config.js --pool=vmThreads",
+    "test:better": "vitest run --config ./vitest.better.config.js --pool=vmThreads",
     "test:inline": "vitest run",
     "test:no-isolate": "vitest run --config ./vitest.better.config.js --no-isolate"
   },
