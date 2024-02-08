@@ -1,23 +1,25 @@
 ## js-test-benchmark
 
 ### Usage
-生成测试用例
+Generate test cases
 ```bash
 node ./testCaseFactory/createCase.js fileCount caseCountInFile spendMillisecond
-# 生成 fileCount 个测试文件（fileCount必须是10的倍数），每个文件中生成 caseCountInFile 个测试用例(caseCountInFile必须是5的倍数）
-# 总测试用例数量（fileCount * caseCountInFile）必须小于100000
-# 模拟业务函数的耗时（单位：ms）
 
-#示例：node .\testCaseFactory\createCase.js 100 10 2000 100个测试文件，共1000个测试用例，业务函数模拟执行2s
+# Generate fileCount test files (fileCount must be a multiple of 10), and generate caseCountInFile test cases in each file (caseCountInFile must be a multiple of 5).
+# The total number of test cases (fileCount * caseCountInFile) must be less than 100000.
+# Time spent simulating business functions (ms).
+
+#Example：node ./testCaseFactory/createCase.js 100 10 2000
 ```
 
+Run benchmark
 ```bash
 pnpm install
 pnpm run test:ben
 ```
 
 ### Output
-Mean是所有基准测试运行的平均时间, 后面的数字±表示该平均值的统计误差的大小, 它是所有测量时间的（校正样本）标准偏差。
+About [result](https://github.com/sharkdp/hyperfine/issues/443#issuecomment-964856075)
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
