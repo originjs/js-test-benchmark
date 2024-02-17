@@ -5,8 +5,6 @@ import * as utils from './utils.js';
 import {functionList, frameworkList} from './config.js';
 import './expandGlobal.js';
 
-// 获取并校验参数，第一个参数是测试文件数量（必须是10的倍数），第二个参数是单个文件内测试用例数量（必须是5的倍数），
-// 总用例数（文件数*单个文件内用例数）必须小于100000
 const args = process.argv;
 if (args[2] === undefined || args[2] === null || args[2] === "") {
     console.log("param fileCount can not be null");

@@ -4,8 +4,10 @@ import * as path from 'path';
 import './expandGlobal.js';
 import shell from 'shelljs';
 
-// 获取并校验参数，第一个参数是测试文件数量（必须是10的倍数），第二个参数是单个文件内测试用例数量（必须是5的倍数），
-// 总用例数（文件数*单个文件内用例数）必须小于100000
+// get and match params，
+// the first parameter is the number of test files (must be a multiple of 10),
+// the second parameter is the number of test cases within a single file (must be a multiple of 5)，
+// Tip: The total number of use cases (number of files * number of use cases within a single file) must be less than 100000
 const args = process.argv;
 if (args[2] === undefined || args[2] === null || args[2] === "") {
     console.log("param fileCount can not be null");
