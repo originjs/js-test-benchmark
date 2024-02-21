@@ -55,11 +55,12 @@ export function setSpendTimeContent() {
     });
 }
 
-export function setConfigJson(ms) {
+export function setConfigJson(cpuTime, ioTime) {
     const binPath = global.getDirName(import.meta.url);
     const jsonPath = path.join(binPath, 'config.json');
     let j = {}
-    j.ms = ms;
+    j.cpuTime = cpuTime;
+    j.ioTime = ioTime;
 
     let jsonContent = JSON.stringify(j);
     fs.writeFileSync(jsonPath, jsonContent, 'utf8', (err) => {

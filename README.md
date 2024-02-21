@@ -3,13 +3,14 @@
 ### Usage
 Generate test cases
 ```bash
-node ./testCaseFactory/createCase.js fileCount caseCountInFile spendMillisecond
+node ./testCaseFactory/createCase.js fileCount caseCountInFile cpuSpendMillisecond ioSpendMillisecond
 
 # Generate fileCount test files (fileCount must be a multiple of 10), and generate caseCountInFile test cases in each file (caseCountInFile must be a multiple of 5).
 # The total number of test cases (fileCount * caseCountInFile) must be less than 100000.
-# Time spent simulating business functions (ms).
+# Time spent of cpu simulating business functions (ms).
+# Time spent of io simulating business functions (ms).
 
-#Example：node ./testCaseFactory/createCase.js 100 10 2000
+#Example：node ./testCaseFactory/createCase.js 100 10 500 500
 ```
 
 Run benchmark
