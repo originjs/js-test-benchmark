@@ -33,12 +33,18 @@ if (caseCountInfile * fileCount > 100000) {
     console.log("total case count must be less than 100,000");
     process.exit();
 }
+
 if (args[4] === undefined || args[4] === null || args[4] === "") {
-    console.log("param spendMillisecond can not be null");
+    console.log("param cpu spendMillisecond can not be null");
     process.exit();
 }
-let spendMillisecond = Number(args[4]);
-utils.setConfigJson(spendMillisecond);
+let cpuTime = Number(args[4]);
+if (args[5] === undefined || args[5] === null || args[5] === "") {
+    console.log("param io spendMillisecond can not be null");
+    process.exit();
+}
+let ioTime = Number(args[5]);
+utils.setConfigJson(cpuTime, ioTime);
 
 await utils.setSpendTimeEmpty();
 let binPath = global.getDirName(import.meta.url);
