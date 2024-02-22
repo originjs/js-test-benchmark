@@ -51,7 +51,7 @@ jobs:
           sudo dpkg -i hyperfine_1.17.0_amd64.deb
       - name: Prepare test
         run: |
-          node ./testCaseFactory/createCase.js 100 50
+          node ./testCaseFactory/createCase.js 100 10 200 200
 
       - name: Run tapjs
         run: |

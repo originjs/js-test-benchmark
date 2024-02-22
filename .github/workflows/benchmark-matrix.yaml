@@ -22,10 +22,6 @@ on:
         - 0
         - 1
         - 3
-      spendTimePreTest:
-        description: 'Time consumption for each test case(ms)'
-        required: true
-        default: 100
       fileCount:
         description: 'Number of test files, Must be a multiple of 10'
         required: true
@@ -33,7 +29,15 @@ on:
       caseCountInFile:
         description: 'Number of test cases in each test file, , Must be a multiple of 5'
         required: true
-        default: 50
+        default: 10
+      cpuSpendMillisecond:
+        description: 'CPU consumption per testcase(ms)'
+        required: true
+        default: 100
+      ioSpendMillisecond:
+        description: 'IO consumption per testcase(ms)'
+        required: true
+        default: 100
 jobs:
   benchmark:
     strategy:
@@ -82,7 +86,7 @@ jobs:
 
       - name: Prepare test
         run: |
-          node ./testCaseFactory/createCase.js ${{ inputs.fileCount }} ${{ inputs.caseCountInFile }} ${{ inputs.spendTimePreTest }}
+          node ./testCaseFactory/createCase.js ${{ inputs.fileCount }} ${{ inputs.caseCountInFile }} ${{ inputs.cpuSpendMillisecond }} ${{ inputs.ioSpendMillisecond }}
 
       - name: Run test
         run: |
