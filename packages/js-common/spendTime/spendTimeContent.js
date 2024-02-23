@@ -27,14 +27,13 @@ export function spendTime() {
     start = Date.now();
     let i = 0;
     while (Date.now() - start < ioTime) {
-        let tempData = fs.readFileSync('../../testCaseFactory/randomData.json', {
+        let tempData = fs.readFileSync('../../testCaseFactory/fileData.txt', {
             encoding: 'utf8',
             flag: 'r'
         }, (err) => {
         });
-        let jsonContent = JSON.stringify(tempData);
         let tempFilePath = '../../testCaseFactory/tempForSpendTime' + i + '.txt';
-        fs.writeFileSync(tempFilePath, jsonContent, 'utf8', (err) => {
+        fs.writeFileSync(tempFilePath, tempData, 'utf8', (err) => {
             if (err) {
                 console.log('err:' + err);
             } else {
