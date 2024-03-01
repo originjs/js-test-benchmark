@@ -6,6 +6,28 @@ on:
   pull_request:
 jobs:
   benchmark-ubuntu:
+    strategy:
+        matrix:
+          test: [
+          # "10 10 50 50", 
+          # "10 10 100 100",
+          # "10 10 200 200",
+          # "100 10 50 50", 
+          # "100 10 100 100",
+          # "100 10 200 200",
+          # "10 10 0 50", 
+          # "10 10 0 100",
+          # "10 10 0 200",
+          # "100 10 0 50", 
+          # "100 10 0 100",
+          # "100 10 0 200",
+          "10 10 50 0", 
+          "10 10 100 0",
+          "10 10 200 0",
+          "100 10 50 0", 
+          "100 10 100 0",
+          "100 10 200 0",
+          ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,8 +37,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Collect Workflow Telemetry
-        uses: konpeki622/workflow-telemetry-action@v1.0.15
+      # - name: Collect Workflow Telemetry
+      #   uses: konpeki622/workflow-telemetry-action@v1.0.15
       
       - name: Install
         run: |
@@ -28,15 +50,34 @@ jobs:
           wget https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
           sudo dpkg -i hyperfine_1.17.0_amd64.deb
 
-      - name: Prepare test
+      - name: test
         run: |
-          node ./testCaseFactory/createCase.js 10 10 100 100
-
-      - name: Run test
-        run: |
+          node ./testCaseFactory/createCase.js ${{ matrix.test }}
           pnpm run test:ben-linux
      
   benchmark-windows:
+    strategy:
+        matrix:
+          test: [
+          # "10 10 50 50", 
+          # "10 10 100 100",
+          # "10 10 200 200",
+          # "100 10 50 50", 
+          # "100 10 100 100",
+          # "100 10 200 200",
+          # "10 10 0 50", 
+          # "10 10 0 100",
+          # "10 10 0 200",
+          # "100 10 0 50", 
+          # "100 10 0 100",
+          # "100 10 0 200",
+          "10 10 50 0", 
+          "10 10 100 0",
+          "10 10 200 0",
+          "100 10 50 0", 
+          "100 10 100 0",
+          "100 10 200 0",
+          ]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,8 +87,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Collect Workflow Telemetry
-        uses: konpeki622/workflow-telemetry-action@v1.0.15
+      # - name: Collect Workflow Telemetry
+      #   uses: konpeki622/workflow-telemetry-action@v1.0.15
       
       - name: Install
         run: |
@@ -57,7 +98,7 @@ jobs:
 
       - name: Prepare test
         run: |
-          node ./testCaseFactory/createCase.js 10 10 100 100
+          node ./testCaseFactory/createCase.js ${{ matrix.test }}
 
       - name: Run test
         run: |
