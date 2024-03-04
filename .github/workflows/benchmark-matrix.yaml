@@ -9,6 +9,7 @@ on:
         default: 1
         type: choice
         options:
+        - 1
         - 2
         - 5
         - 10
@@ -73,8 +74,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Collect Workflow Telemetry
-        uses: konpeki622/workflow-telemetry-action@v1.0.15
+      # - name: Collect Workflow Telemetry
+      #   uses: konpeki622/workflow-telemetry-action@v1.0.15
       
       - name: Install
         run: |
@@ -92,4 +93,11 @@ jobs:
 
       - name: Run test
         run: |
-          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} ${{ matrix.test }}
+          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} --export-json result.json ${{ matrix.test }}
+
+      - name: Report test
+        env:
+          REPORT_URL: ${{ secrets.REPORT_URL }}
+          REPORT_INPUT: ${{ inputs.fileCount }}-${{ inputs.caseCountInFile }}-${{ inputs.cpuSpendMillisecond }}-${{ inputs.ioSpendMillisecond }}
+        run: |
+          node scripts/report.js
