@@ -5,7 +5,7 @@ on:
       - '**'
   pull_request:
 jobs:
-  benchmark-ubuntu:
+  ubuntu:
     strategy:
         matrix:
           test: [
@@ -50,12 +50,22 @@ jobs:
           wget https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
           sudo dpkg -i hyperfine_1.17.0_amd64.deb
 
-      - name: test
+      - name: Prepare test
         run: |
           node ./testCaseFactory/createCase.js ${{ matrix.test }}
+
+      - name: Run test
+        run: |
           pnpm run test:ben-linux
+
+      - name: Report test
+        env:
+          REPORT_URL: ${{ secrets.REPORT_URL }}
+          REPORT_INPUT: ${{ matrix.test }}
+        run: |
+          node scripts/report.js
      
-  benchmark-windows:
+  windows:
     strategy:
         matrix:
           test: [
@@ -103,3 +113,10 @@ jobs:
       - name: Run test
         run: |
           pnpm run test:ben-windows
+
+      - name: Report test
+        env:
+          REPORT_URL: ${{ secrets.REPORT_URL }}
+          REPORT_INPUT: ${{ matrix.test }}
+        run: |
+          node scripts/report.js

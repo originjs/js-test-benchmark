@@ -27,12 +27,13 @@
     "test:tapjs-better": "cd packages/tapjs && npm run test:better -s || exit 0",
     "test:tapjs-inline": "cd packages/tapjs && npm run test:inline -s || exit 0",
     "test:uvu": "pnpm -r --filter uvu run test",
-    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 \"pnpm run test:jasmine\" \"pnpm run test:jasmine-better\" \"pnpm run test:jest\" \"pnpm run test:jest-better\" \"pnpm run test:jest-inline\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-forks\" \"pnpm run test:vitest-inline\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:mocha-better\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:ava-inline\" \"pnpm run test:tape\" \"pnpm run test:tapjs\" \"pnpm run test:tapjs-better\" \"pnpm run test:tapjs-inline\" \"pnpm run test:uvu\" ",
-    "test:ben-linux": "hyperfine --warmup 1 --runs 2 'pnpm run test:jasmine' 'pnpm run test:jasmine-better' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-forks' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm run test:tapjs' 'pnpm run test:tapjs-better' 'pnpm run test:uvu'"
+    "test:ben-windows": "hyperfine.exe --warmup 1 --runs 2 --export-json result.json \"pnpm run test:jasmine\" \"pnpm run test:jasmine-better\" \"pnpm run test:jest\" \"pnpm run test:jest-better\" \"pnpm run test:jest-inline\" \"pnpm run test:vitest\" \"pnpm run test:vitest-better\" \"pnpm run test:vitest-forks\" \"pnpm run test:vitest-inline\" \"pnpm run test:vitest-no-isolate\" \"pnpm run test:mocha\" \"pnpm run test:mocha-better\" \"pnpm run test:qunit\" \"pnpm run test:ava\" \"pnpm run test:ava-inline\" \"pnpm run test:tape\" \"pnpm run test:tapjs\" \"pnpm run test:tapjs-better\" \"pnpm run test:tapjs-inline\" \"pnpm run test:uvu\" ",
+    "test:ben-linux": "hyperfine --warmup 1 --runs 2 --export-json result.json 'pnpm run test:jasmine' 'pnpm run test:jasmine-better' 'pnpm run test:jest' 'pnpm run test:jest-better' 'pnpm run test:vitest' 'pnpm run test:vitest-better' 'pnpm run test:vitest-forks' 'pnpm run test:vitest-no-isolate' 'pnpm run test:mocha' 'pnpm run test:mocha-better' 'pnpm run test:qunit' 'pnpm run test:ava' 'pnpm run test:tape' 'pnpm run test:tapjs' 'pnpm run test:tapjs-better' 'pnpm run test:uvu'"
   },
   "keywords": [],
   "author": "",
   "dependencies": {
+    "axios": "^1.6.7",
     "shelljs": "^0.8.5"
   }
 }
