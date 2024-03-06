@@ -2,10 +2,9 @@ const fs = require('fs');
 const axios = require('axios');
 const os = require('os');
 
-const benchmarkName = 'performance'; //指标
 const techStack = 'unitTest';
-const url = process.env.REPORT_URL;
-const input = process.env.REPORT_INPUT;
+const url = 'http://8.134.178.105:3000';
+const input = process.env.REPORT_INPUT || '0 0 0 0';
 
 // Read the JSON file
 const jsonData = JSON.parse(fs.readFileSync('result.json', 'utf8'));
@@ -15,14 +14,15 @@ async function main() {
     url + '/sync/benchmark/getPatchId',
     {}
   );
-  const res = dealdata(jsonData, patchId);
+  console.log('patchId: ', patchId)
+  const res = dealdata(jsonData, patchId.toString());
   postData(res);
 }
 
 function dealdata(jsonData, patchId) {
   return jsonData.results.map((el) => ({
     projectName: getProjectInfo(el.command)[0],
-    benchmark: benchmarkName,
+    benchmark: getProjectInfo(el.command)[1] + '_' + input,
     techStack,
     score: 0,
     content: {
@@ -37,7 +37,7 @@ function dealdata(jsonData, patchId) {
 
 function getProjectInfo(command) {
   const projectInfo = command.split(':').pop();
-  if ((projectInfo.split('-').length = 1)) {
+  if ((projectInfo.split('-').length === 1)) {
     projectMethod = 'default';
   } else {
     projectMethod = projectInfo.split('-').pop();
@@ -51,6 +51,7 @@ async function postData(res) {
   for (const data of res) {
     try {
       const response = await axios.post(url + '/sync/benchmark', data);
+      console.log(data);
       console.log(response.data);
     } catch (error) {
       console.error(error);
