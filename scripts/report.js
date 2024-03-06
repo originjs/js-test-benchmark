@@ -3,7 +3,7 @@ const axios = require('axios');
 const os = require('os');
 
 const techStack = 'unitTest';
-const url = 'http://8.134.178.105:3000';
+const url = process.env.REPORT_URL;
 const input = process.env.REPORT_INPUT || '0 0 0 0';
 
 // Read the JSON file
@@ -22,7 +22,7 @@ async function main() {
 function dealdata(jsonData, patchId) {
   return jsonData.results.map((el) => ({
     projectName: getProjectInfo(el.command)[0],
-    benchmark: getProjectInfo(el.command)[1] + '_' + input,
+    benchmark: getProjectInfo(el.command)[1] + '_' + input.split(' ').join('_'),
     techStack,
     score: 0,
     content: {
