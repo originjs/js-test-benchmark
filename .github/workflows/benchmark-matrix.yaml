@@ -93,7 +93,7 @@ jobs:
 
       - name: Run test
         run: |
-          hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} --export-json result.json ${{ matrix.test }}
+          pnpm run serve && hyperfine --warmup ${{ inputs.warmupTimes }} --runs ${{ inputs.runTimes }} --export-json result.json ${{ matrix.test }}
 
       - name: Report test
         env:
