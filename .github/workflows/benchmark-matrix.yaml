@@ -98,6 +98,6 @@ jobs:
       - name: Report test
         env:
           REPORT_URL: ${{ secrets.REPORT_URL }}
-          REPORT_INPUT: ${{ inputs.fileCount }}-${{ inputs.caseCountInFile }}-${{ inputs.cpuSpendMillisecond }}-${{ inputs.ioSpendMillisecond }}
+          REPORT_INPUT: ${{ inputs.fileCount }}_${{ inputs.caseCountInFile }}_${{ inputs.cpuSpendMillisecond }}_${{ inputs.ioSpendMillisecond }}
         run: |
           node scripts/report.js
