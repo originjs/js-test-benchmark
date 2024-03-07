@@ -31,8 +31,7 @@ export async function spendTime() {
   async function postIoRequest(time) {
     try {
       const response = await axios.post(
-        // process.env.REPORT_URL + '/post_sync_benchmark_getDelayedMessage',
-       ' http://8.134.178.105:3000/sync/benchmark/getDelayedMessage',
+       'http://localhost:3000/sync/benchmark/getDelayedMessage',
         {
            delay: time
         }
