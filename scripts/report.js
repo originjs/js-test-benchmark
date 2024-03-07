@@ -22,7 +22,7 @@ async function main() {
 function dealdata(jsonData, patchId) {
   return jsonData.results.map((el) => ({
     projectName: getProjectInfo(el.command)[0],
-    benchmark: getProjectInfo(el.command)[1] + '_' + input.split(' ').join('_'),
+    benchmark: getProjectInfo(el.command)[1] + '_' + input.split(/[\s|_]/).join('_'),
     techStack,
     score: 0,
     content: {

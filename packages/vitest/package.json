@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "test:better": "vitest run --config ./vitest.better.config.js --pool=vmThreads --poolOptions.vmThreads.maxThreads=4",
-    "test:forks": "vitest run --config ./vitest.better.config.js --pool=forks --poolOptions.forks.maxThreads=4",
+    "test:better": "vitest run --config ./vitest.better.config.js --pool=vmThreads --poolOptions.vmThreads.minThreads=2 --poolOptions.vmThreads.maxThreads=4",
+    "test:forks": "vitest run --config ./vitest.better.config.js --pool=forks --poolOptions.forks.minThreads=2 --poolOptions.forks.maxThreads=4",
     "test:inline": "vitest run",
     "test:no-isolate": "vitest run --config ./vitest.better.config.js --no-isolate"
   },
