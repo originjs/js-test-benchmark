@@ -1,46 +1,46 @@
 import * as fs from 'fs';
+import axios from 'axios';
 
-export function spendTime() {
-    let cpuTime = 0;
-    let ioTime = 0;
+export async function spendTime() {
+  let cpuTime = 0;
+  let ioTime = 0;
+  try {
+    let data = fs.readFileSync(
+      '../../testCaseFactory/config.json',
+      {
+        encoding: 'utf8',
+        flag: 'r'
+      },
+      (err) => {}
+    );
+    let config = JSON.parse(data);
+    cpuTime = config.cpuTime;
+    ioTime = config.ioTime;
+  } catch (err) {
+    console.log(err);
+  }
+  let start = Date.now();
+  let sum = 0;
+  while (Date.now() - start < cpuTime) {
+    sum = sum + Math.random() * 10;
+    if (sum > 100000000) {
+      sum = sum % 10000;
+    }
+  }
+
+  async function postIoRequest(time) {
     try {
-        let data = fs.readFileSync('../../testCaseFactory/config.json', {
-            encoding: 'utf8',
-            flag: 'r'
-        }, (err) => {
-        });
-        let config = JSON.parse(data);
-        cpuTime = config.cpuTime;
-        ioTime = config.ioTime;
-    } catch (err) {
-        console.log(err);
-    }
-    let start = Date.now();
-    let sum = 0;
-    while (Date.now() - start < cpuTime) {
-        sum = sum + Math.random() * 10;
-        if (sum > 100000000) {
-            sum = sum % 10000;
+      const response = await axios.post(
+        // process.env.REPORT_URL + '/post_sync_benchmark_getDelayedMessage',
+       ' http://8.134.178.105:3000/sync/benchmark/getDelayedMessage',
+        {
+           delay: time
         }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
     }
-
-    start = Date.now();
-    let i = 0;
-    while (Date.now() - start < ioTime) {
-        let tempData = fs.readFileSync('../../testCaseFactory/randomData.json', {
-            encoding: 'utf8',
-            flag: 'r'
-        }, (err) => {
-        });
-        let jsonContent = JSON.stringify(tempData);
-        let tempFilePath = '../../testCaseFactory/tempForSpendTime' + i + '.txt';
-        fs.writeFileSync(tempFilePath, jsonContent, 'utf8', (err) => {
-            if (err) {
-                console.log('err:' + err);
-            } else {
-                console.log('create temp json file success!');
-            }
-        });
-        i++;
-    }
+  }
+  await postIoRequest(ioTime);
 }
