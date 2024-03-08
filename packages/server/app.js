@@ -8,12 +8,11 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
 app.post('/sync/benchmark/getDelayedMessage', (req, res) => {
   const { delay } = req.body;
   setTimeout(() => {
-    res.send(`Delay return time: ${delay} ms!`);
-  });
+    res.send(`Delay return time: ${delay} ms! ${index}`);
+  }, delay);
 });
 
 const port = process.env.PORT || 3000;
