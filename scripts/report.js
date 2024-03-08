@@ -24,12 +24,8 @@ function dealdata(jsonData, patchId) {
     projectName: getProjectInfo(el.command)[0],
     benchmark: getProjectInfo(el.command)[1] + '_' + input.split(/[\s|_]/).join('_'),
     techStack,
-    score: 0,
-    content: {
-      input: input,
-      mode: getProjectInfo(el.command)[1],
-      mean: el.mean
-    },
+    rawValue: parseFloat(el.mean.toFixed(2)),
+    content: el,
     patchId,
     platform: os.platform()
   }));

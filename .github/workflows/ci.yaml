@@ -57,13 +57,6 @@ jobs:
       - name: Run test
         run: |
           pnpm run test:ben-linux
-
-      - name: Report test
-        env:
-          REPORT_URL: ${{ secrets.REPORT_URL }}
-          REPORT_INPUT: ${{ matrix.test }}
-        run: |
-          node scripts/report.js
      
   windows:
     strategy:
@@ -113,10 +106,3 @@ jobs:
       - name: Run test
         run: |
           pnpm run test:ben-windows
-
-      - name: Report test
-        env:
-          REPORT_URL: ${{ secrets.REPORT_URL }}
-          REPORT_INPUT: ${{ matrix.test }}
-        run: |
-          node scripts/report.js
