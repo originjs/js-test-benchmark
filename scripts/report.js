@@ -5,16 +5,21 @@ const os = require('os');
 const techStack = 'unitTest';
 const url = process.env.REPORT_URL;
 const input = process.env.REPORT_INPUT || '0 0 0 0';
+let patchId = '';
 
 // Read the JSON file
 const jsonData = JSON.parse(fs.readFileSync('result.json', 'utf8'));
 
 async function main() {
-  const { data: patchId } = await axios.post(
-    url + '/sync/benchmark/getPatchId',
-    {}
-  );
-  console.log('patchId: ', patchId)
+  if (process.env.CI) {
+    patchId = process.env.REPORT_PATCH_ID
+  } else {
+    const response = await axios.post(
+      url + '/sync/benchmark/getPatchId',
+      {}
+    );
+    patchId = response.data;
+  }
   const res = dealdata(jsonData, patchId.toString());
   postData(res);
 }

@@ -2,6 +2,11 @@ name: Run Benchmarks
 
 on:
   workflow_dispatch:
+    inputs:
+      patchId:
+        description: 'Benchmark batch ID'
+        required: true
+        default: ''
 jobs:
   benchmark:
     strategy:
@@ -77,5 +82,6 @@ jobs:
         env:
           REPORT_URL: ${{ secrets.REPORT_URL }}
           REPORT_INPUT: ${{ matrix.metrics }}
+          REPORT_PATCH_ID: ${{ inputs.patchId }}
         run: |
           node scripts/report.js
