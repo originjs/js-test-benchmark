@@ -11,7 +11,8 @@ app.get('/', (req, res) => {
 app.post('/sync/benchmark/getDelayedMessage', (req, res) => {
   const { delay } = req.body;
   setTimeout(() => {
-    res.send(`Delay return time: ${delay} ms! ${index}`);
+    res.send(`Delay return time: ${delay} ms!`);
+    console.log(`Delay return time: ${delay} ms!`);
   }, delay);
 });
 
