@@ -5,40 +5,43 @@ const os = require('os');
 const techStack = 'unitTest';
 const url = process.env.REPORT_URL;
 const input = process.env.REPORT_INPUT || '0 0 0 0';
-let patchId = '';
 
 // Read the JSON file
 const jsonData = JSON.parse(fs.readFileSync('result.json', 'utf8'));
 
 async function main() {
-  if (process.env.CI) {
-    patchId = process.env.REPORT_PATCH_ID
-  } else {
-    const response = await axios.post(
-      url + '/sync/benchmark/getPatchId',
-      {}
-    );
-    patchId = response.data;
-  }
-  const res = dealdata(jsonData, patchId.toString());
-  postData(res);
+  const patchId_ = (process.env.CI) ? process.env.REPORT_PATCH_ID : (await axios.post(url + '/sync/benchmark/getPatchId', {})).data;
+  const res = dealdata(jsonData, patchId_);
+  postResults(res);
 }
 
-function dealdata(jsonData, patchId) {
-  return jsonData.results.map((el) => ({
-    projectName: getProjectInfo(el.command)[0],
-    benchmark: getProjectInfo(el.command)[1] + '_' + input.split(/[\s|_]/).join('_'),
+function dealdata(data, patchId_) {
+  return data.results.map(({command, mean}) => ({
+    projectName: getProjectInfo(command)[0],
+    benchmark: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     techStack,
-    rawValue: parseFloat(el.mean.toFixed(2)),
-    content: el,
-    patchId,
-    platform: os.platform()
+    rawValue: parseFloat(mean.toFixed(2)),
+    content: {command, mean},
+    patchId: patchId_,
+    platform: os.platform(),
   }));
 }
 
+
+function getBenchmarkType(input) {
+  const type = input.split(/[\s_]/).pop();
+  return type === '0' ? 'CPU' : 'IO';
+}
+function getBenchmark(input) {
+  const type = getBenchmarkType(input);
+  const inputParts = input.split(/[\s_]/);
+  return `${type}_${inputParts.join('_')}`;
+}
+
+
 function getProjectInfo(command) {
   const projectInfo = command.split(':').pop();
-  if ((projectInfo.split('-').length === 1)) {
+  if (projectInfo.split('-').length === 1) {
     projectMethod = 'default';
   } else {
     projectMethod = projectInfo.split('-').pop();
@@ -48,12 +51,11 @@ function getProjectInfo(command) {
   return [projectName, projectMethod];
 }
 
-async function postData(res) {
-  for (const data of res) {
+async function postResults(results) {
+  for (const result of results) {
     try {
-      const response = await axios.post(url + '/sync/benchmark', data);
-      console.log(data);
-      console.log(response.data);
+      const {data} = await axios.post(url + '/sync/benchmark', result);
+      console.log(result);
     } catch (error) {
       console.error(error);
     }

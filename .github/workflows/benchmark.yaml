@@ -6,7 +6,7 @@ on:
       patchId:
         description: 'Benchmark batch ID'
         required: true
-        default: ''
+        default: -1
 jobs:
   benchmark:
     strategy:
