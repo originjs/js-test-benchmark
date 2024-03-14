@@ -21,6 +21,7 @@
     "test:mocha-better": "pnpm -r --filter mocha run test:better",
     "test:qunit": "pnpm -r --filter qunit run test",
     "test:ava": "pnpm -r --filter ava run test",
+    "test:ava-better": "pnpm -r --filter ava run test:better",
     "test:ava-inline": "pnpm -r --filter ava run test:inline",
     "test:tape": "pnpm -r --filter tape run test",
     "test:tapjs": "cd packages/tapjs && npm run test -s || exit 0",
