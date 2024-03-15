@@ -2,7 +2,7 @@ const fs = require('fs');
 const axios = require('axios');
 const os = require('os');
 
-const techStack = 'unitTest';
+const techStack = '测试框架-UT';
 const url = process.env.REPORT_URL;
 const input = process.env.REPORT_INPUT || '0 0 0 0';
 
@@ -18,6 +18,8 @@ async function main() {
 function dealdata(data, patchId_) {
   return data.results.map(({command, mean}) => ({
     projectName: getProjectInfo(command)[0],
+    displayName: getProjectInfo(command)[0],
+    indexName: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     benchmark: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     techStack,
     rawValue: parseFloat(mean.toFixed(2)),
