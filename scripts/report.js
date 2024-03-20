@@ -11,15 +11,15 @@ const jsonData = JSON.parse(fs.readFileSync('result.json', 'utf8'));
 
 async function main() {
   const patchId_ = (process.env.CI) ? process.env.REPORT_PATCH_ID : (await axios.post(url + '/sync/benchmark/getPatchId', {})).data;
-  const res = dealdata(jsonData, patchId_);
+  const res = dealData(jsonData, patchId_);
   postResults(res);
 }
 
-function dealdata(data, patchId_) {
+function dealData(data, patchId_) {
   return data.results.map(({command, mean}) => ({
     projectName: getProjectInfo(command)[0],
-    displayName: getProjectInfo(command)[0],
-    indexName: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
+    displayName: `${getProjectInfo(command)[0]}(${getBenchmark(input)})`,
+    indexName: `${getBenchmark(input)}`,
     benchmark: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     techStack,
     rawValue: parseFloat(mean.toFixed(2)),
@@ -32,7 +32,7 @@ function dealdata(data, patchId_) {
 
 function getBenchmarkType(input) {
   const type = input.split(/[\s_]/).pop();
-  return type === '0' ? 'CPU' : 'IO';
+  return type === '0' ? 'CPU密集型' : 'IO密集型';
 }
 function getBenchmark(input) {
   const type = getBenchmarkType(input);
