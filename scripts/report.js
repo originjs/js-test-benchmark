@@ -3,7 +3,7 @@ const axios = require('axios');
 const os = require('os');
 
 const techStack = '测试框架-UT';
-const url = process.env.REPORT_URL;
+const url = process.env.REPORT_URL || 'http://8.134.178.105:3000';
 const input = process.env.REPORT_INPUT || '0 0 0 0';
 
 // Read the JSON file
@@ -18,8 +18,7 @@ async function main() {
 function dealData(data, patchId_) {
   return data.results.map(({command, mean}) => ({
     projectName: getProjectInfo(command)[0],
-    displayName: `${getProjectInfo(command)[0]}(${getBenchmark(input)})`,
-    indexName: `${getBenchmark(input)}`,
+    displayName: `${getProjectInfo(command)[0]}(${getProjectInfo(command)[1]})`,
     benchmark: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     techStack,
     rawValue: parseFloat(mean.toFixed(2)),
@@ -29,10 +28,9 @@ function dealData(data, patchId_) {
   }));
 }
 
-
 function getBenchmarkType(input) {
   const type = input.split(/[\s_]/).pop();
-  return type === '0' ? 'CPU密集型' : 'IO密集型';
+  return type === '0' ? 'CPU-intensive' : 'IO-intensive';
 }
 function getBenchmark(input) {
   const type = getBenchmarkType(input);
