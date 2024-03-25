@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "ava",
-    "test:better": "ava -c 8",
+    "test:better": "ava -c 4",
     "test:inline": "ava --no-worker-threads"
   },
   "author": "",

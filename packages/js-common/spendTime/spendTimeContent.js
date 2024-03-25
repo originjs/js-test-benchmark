@@ -36,7 +36,6 @@ export async function spendTime() {
            delay: time
         }
       );
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

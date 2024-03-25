@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/**/**.test.js -t 5000",
-    "test:better": "mocha tests/**/**.test.js -t 5000 --parallel --jobs 8"
+    "test:better": "mocha tests/**/**.test.js -t 5000 --parallel --jobs 4"
   },
   "author": "",
   "license": "ISC",

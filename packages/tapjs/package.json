@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tap",
-    "test:better": "tap --jobs=8",
+    "test:better": "tap --jobs=4",
     "test:inline": "tap --jobs=1"
   },
   "author": "",

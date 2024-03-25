@@ -22,7 +22,7 @@ function dealData(data, patchId_) {
     benchmark: `${getProjectInfo(command)[1]}_${getBenchmark(input)}`,
     techStack,
     rawValue: parseFloat(mean.toFixed(2)),
-    content: {command, mean},
+    content: {command, mean, cpuCoreNum: os.cpus().length},
     patchId: patchId_,
     platform: os.platform(),
   }));
