@@ -15,7 +15,7 @@
     "test:vitest": "pnpm -r --filter vitest run test",
     "test:vitest-parallel": "pnpm -r --filter vitest run test:better",
     "test:vitest-forks": "pnpm -r --filter vitest run test:forks",
-    "test:vitest-serial": "pnpm -r --filter vitest run test --poolOptions.threads.singleThread=true",
+    "test:vitest-serial": "pnpm -r --filter vitest run test:inline",
     "test:vitest-no-isolate": "pnpm -r --filter vitest run test:no-isolate",
     "test:mocha": "pnpm -r --filter mocha run test",
     "test:mocha-parallel": "pnpm -r --filter mocha run test:better",
